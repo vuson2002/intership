@@ -1,0 +1,110 @@
+USE sMyProject;
+
+GO
+
+CREATE TABLE tbt_admin(
+	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	account NVARCHAR(100) NOT NULL,
+	pass NVARCHAR(100) NOT NULL
+);
+GO
+CREATE TABLE tbt_customer(
+	custID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	custName NVARCHAR(100),
+	custEmail NVARCHAR(100),
+	custAddress NVARCHAR(100),
+	custPhone NVARCHAR(100),
+	custPass NVARCHAR(100)
+
+);
+GO
+CREATE TABLE tbt_supplier(
+	supID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	supName NVARCHAR(100),
+	supEmail NVARCHAR(100),
+	supAddress NVARCHAR(100),
+	supPhone NVARCHAR(100),	
+);
+GO
+CREATE TABLE tbt_category(
+	catID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	catName NVARCHAR(100),
+	catTitle NVARCHAR(250),
+	catCode VARCHAR(10),
+	parentID INT
+);
+GO
+CREATE TABLE tbt_product(
+	proID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	proName NVARCHAR(100),
+	proCode VARCHAR(10),
+	proPrice decimal(18,0),
+	PromotionPrice decimal(18,0),
+	proQuantity int,
+	proStatus NVARCHAR(100), 
+	proImages NVARCHAR(250), 
+	proDescription NVARCHAR(500), 
+	proTitle NVARCHAR(250),
+	proWarranty INT,
+	catID INT NOT NULL,
+	supID INT NOT NULL,
+	CPU NVARCHAR(150),
+	RAM NVARCHAR(150),
+	GraphicCard NVARCHAR(150),
+	Interface NVARCHAR(150),
+	FOREIGN KEY(catID) REFERENCES tbt_category(catID),
+	FOREIGN KEY(supID) REFERENCES tbt_supplier(supID)
+);
+GO
+CREATE TABLE tbt_feedback(
+	feebID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	feebContent NVARCHAR(250),
+	dateCreate DATETIME,
+	custID INT,
+	FOREIGN KEY(custID) REFERENCES tbt_customer(custID)
+);
+GO
+CREATE TABLE tbt_slide(
+	sliID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	sliImages NVARCHAR(100),
+	displayOrder INT,
+	sliDescription NVARCHAR(500),
+	sliStatus NVARCHAR(100),
+	sliLink NVARCHAR(250),
+	dateCreate DATETIME
+);
+GO
+CREATE TABLE tbt_contact(
+	conID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	conName NVARCHAR(100),
+	conAddress NVARCHAR(200),
+	conPhone NVARCHAR(50),
+	conEmail NVARCHAR(150)
+);
+GO
+CREATE TABLE tbt_menuType(
+	typeID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	typeName NVARCHAR(200)
+);
+GO
+CREATE TABLE tbt_menu(
+	menuID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	menuText NVARCHAR(200),
+	menuLink NVARCHAR(50),
+	displayOrder INT,
+	menuTarget NVARCHAR(50),
+	typeID INT
+);
+GO
+CREATE TABLE tbt_order(
+	ordID INT IDENTITY(1,1) PRIMARY KEY NOT NULL, 
+	custID INT,
+	proID INT,
+	ordStatus NVARCHAR(50),
+	dateCreate DATETIME,
+	ordQuantity INT,
+	proPrice decimal(18,0),
+	TotalPrice decimal(18,0),
+	FOREIGN KEY(custID)		REFERENCES tbt_customer(custID),
+	FOREIGN KEY(proID)		REFERENCES tbt_product(proID)
+);

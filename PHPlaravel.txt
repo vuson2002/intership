@@ -1,0 +1,37 @@
+1. Tao Controller
+php artisan make:controller HomeController
+
+1.1 Tao RESTful Controller
+php artisan make:controller StudentController --resource
+
+2. Tao Model
+php artisan make:model Example
+
+3. Tao Request
+php artisan make:request UserRequest
+
+4. Migrations
+-- Create Migrations [Tao bang database (example: admin table)]
+php artisan make:migration create_admin_table --create=admin
+(create_admin_table = table name)
+
+-- Run Migrations
+==> php artisan migrate
+(Sau khi tạo xong bảng table thì dùng câu lệnh này để update trên mySQL.)
+
+-- Roll back Migrations
+==> php artisan migrate:rollback
+(Quay lại hành động vừa thực hiện)
+(Thường được dùng để xóa bảng gần nhất vừa mới tạo) 
+
+-- Refresh Migrations
+==> php artisan migrate:refresh
+(Làm mới tất cả các bảng trong database)
+(Thường được dùng để refresh database sau khi sửa thuộc tính trong một bảng nào đó nhưng sẽ làm mất tất cả dữ liệu có trong DB)
+
+-- Reset Migrations
+==> php artisan migrate:reset
+(Xóa tất cả bảng trong db ĐƯỢC TẠO BỞI Migrations, còn những bảng được tạo = Schema Builder trong router sẽ k bị xóa)
+
+
+NOTE: ASC = TĂNG DẦN | DESC: GIẢM DẦN

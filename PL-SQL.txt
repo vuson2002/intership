@@ -1,0 +1,25 @@
+- TẠO HOẶC THAY THẾ DATABASE
+CREATE OR REPLACE PACKAGE test;
+AS
+BEGIN
+ //....
+END;
+
+- KÍ TỰ: (https://www.tutorialspoint.com/plsql/plsql_basic_syntax.htm)
+ := (KÍ TỰ CHUYỂN NHƯỢNG DÙNG ĐỂ GẮN GIÁ TRỊ)
+	=> Example: name CONSTANT VARCHAR(10) := 'SON'; (kí tự := GIỐNG kí tự =)
+		    age number(3) := 18; 
+ || (KÍ TỰ NỐI -- THAY THẾ CHO + TRONG JAVA)
+	=> Example: dbms_output.put_line('value of a is : ' || a);  // in ra giá trị của a (kí tự || GIỐNG kí tự +)
+		    
+
+- CẤU TRÚC CƠ BẢN CỦA PL/SQL: (https://www.tutorialspoint.com/plsql/plsql_basic_syntax.htm)
+DECLARE 			| DECLARE 
+   <declarations section> 	|	message  varchar2(20):= 'Hello, World!'; -- khai báo
+BEGIN 				| BEGIN -- bắt đầu lệnh	
+   <executable command(s)>	|	dbms_output.put_line(message); -- in chuỗi
+EXCEPTION 			| END; -- kết thúc lệnh
+   <exception handling> 	|
+END; 				|
+
+(https://www.tutorialspoint.com/plsql/plsql_variable_types.htm) kéo xuống cuốiPROCEDURE 

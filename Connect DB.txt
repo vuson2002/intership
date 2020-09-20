@@ -1,0 +1,29 @@
+public OracleConnection KET_NOI()
+        {
+            OracleConnection conn = new OracleConnection();
+            try
+            {
+                string[] mang;
+                mang = this.doc_file_ketnoi();
+                string oradb = "Data Source=(DESCRIPTION=";
+                oradb = oradb + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=" + tach_mang(mang, "IP") + ")(PORT=" + tach_mang(mang, "PORT") + ")))";
+                oradb = oradb + "(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=" + tach_mang(mang, "SV_NAME") + ")));";
+                oradb = oradb + "User Id=" + tach_mang(mang, "U") + ";Password=" + tach_mang(mang, "P") + ";";
+                conn.ConnectionString = oradb;
+                conn.Open();
+                return conn;
+            }
+            catch (Exception ex) { throw new Exception("loi:Lỗi kết nối cơ sở dữ liệu:loi"); }
+        }
+
+
+public void EXCU_CMD(OracleCommand cmd)
+        {
+            try
+            {
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception ex) { throw new Exception(ex.ToString()); }
+
+        }

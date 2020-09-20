@@ -1,0 +1,11 @@
+-- Thêm một cột vào bảng
+ALTER TABLE HocSinh ADD NgaySinh Date
+- HocSinh là tên bảng
+- Ngày sinh là tên cột
+- Date là kiểu dữ liệu
+
+-- Xóa bảng khỏi DB
+DROP TABLE HocSinh
+
+-- Xóa tòa bộ dữ liệu có trong bảng
+TRUNCATE TABLE HocSinh

@@ -1,0 +1,11 @@
+Phần mềm:
++ Hạ tầng: máy tính, server,...
++ Ứng dụng 
+
+- Hệ điều hành là nơi quản lý và môi trường để ứng dụng chạy
+
+Ứng dụng:
+   User -> Firewall -> Server -> database
+
+
+Core -> chức năng(bán hàng, add,...) -> Model
