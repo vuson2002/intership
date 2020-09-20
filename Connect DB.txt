@@ -27,3 +27,5 @@ public void EXCU_CMD(OracleCommand cmd)
             catch (Exception ex) { throw new Exception(ex.ToString()); }
 
         }
+        
+        //sadasdadasdsa
